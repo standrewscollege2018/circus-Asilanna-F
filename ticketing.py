@@ -12,11 +12,16 @@ class Ticket:
         tickets.append(self)
         ticket_times.append(self._time)
 
-#
+#define function to set main label
 def showings():
     showings_info.set("")
     for t in tickets:
-        showings_info.set(t._time + " - " + str(t._capacity )+ " available/" + str(t._capacity) +" capacity - $" + str(t._price) + " per ticket" + "\n")
+        showings_info.set(showings_info.get() + t._time + " - " + str(t._capacity )+ " available/" + str(t._capacity) +" capacity - $" + str(t._price) + " per ticket" + "\n")
+
+       
+#define function to buy tickets
+#def buy():
+    
 
 #create list to store objects 
 tickets = []
@@ -54,9 +59,13 @@ tickets_entry = Entry(root, textvariable=no_tickets).grid(row=4, column=1)
 buy_btn = Button(root, text="Buy Tickets").grid(row=4, column=2)
 
 #create summary labels
+sold_info = StringVar()
+earned_info = StringVar()
+sold_info.set("0 tickets sold today")
+earned_info.set("$0 earned today")
 summary_lbl = Label(root, text="Summary").grid(row=5, columnspan=3)
-sold_lbl = Label(root, text="0 tickets sold today").grid(row=6, columnspan=3)
-earned_lbl = Label(root, text="$0 earned today").grid(row=7, columnspan=3)
+sold_lbl = Label(root, textvariable=sold_info).grid(row=6, columnspan=3)
+earned_lbl = Label(root, textvariable=earned_info).grid(row=7, columnspan=3)
 
 
 #start main window running
